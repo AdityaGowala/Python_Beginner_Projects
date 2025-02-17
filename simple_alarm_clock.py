@@ -5,6 +5,14 @@
 
 import datetime
 import time
+import os
+import winsound
+
+def alarm_sound():
+    if(os.name == 'nt'):
+        winsound.Beep(1000 , 2000)
+    else:
+        print("\n⏰ ALARM! Time to wake up!")
 
 def set_allarm():
     allarm = input("\nSet alarm (HH:MM:SS): ").strip()
@@ -15,7 +23,7 @@ def set_allarm():
         while True:
             current_datetime = datetime.datetime.now().time()
             if current_datetime >= allarm:
-                print("\n⏰ ALARM! Time to wake up!")
+                alarm_sound()
                 break
             time.sleep(1)
 
